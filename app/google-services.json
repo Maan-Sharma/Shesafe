@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "54945725599",
+    "firebase_url": "https://threadclone-373d8-default-rtdb.firebaseio.com",
+    "project_id": "threadclone-373d8",
+    "storage_bucket": "threadclone-373d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54945725599:android:e252546e7ab5d12be076aa",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsPnLYjtNrtt9pkaRGSmmgEpTlEsAswvI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54945725599:android:2d866da3aaed0bade076aa",
+        "android_client_info": {
+          "package_name": "com.example.thread"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsPnLYjtNrtt9pkaRGSmmgEpTlEsAswvI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
