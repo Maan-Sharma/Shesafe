@@ -56,7 +56,7 @@ Sends SMS messages with location information to emergency contacts.
 * **Android SDK**
 * **Firebase (for storing emergency contacts)**
 * **Speech Recognition API**
-* **Sensor Manager (Accelerometer)**
+* **Sensor Manager (Gyroscope sensor)**
 * **Location Services**
 
 ---
