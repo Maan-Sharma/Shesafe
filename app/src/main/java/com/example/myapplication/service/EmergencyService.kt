@@ -13,17 +13,19 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
+import androidx.navigation.NavController
 import com.google.firebase.firestore.FirebaseFirestore
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 import java.util.Locale
 
 @Composable
-fun EmergencyScreen() {
+fun EmergencyScreen(navController: NavController) {
     val context = LocalContext.current
     var emergencyNumber by remember { mutableStateOf<String?>(null) }
     var isLoading by remember { mutableStateOf(true) }
@@ -93,7 +95,8 @@ fun EmergencyScreen() {
                             callPermissionLauncher.launch(Manifest.permission.CALL_PHONE)
                         }
                     },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFBB7E7A))
                 ) {
                     Text("Call Emergency Contact")
                 }
@@ -102,7 +105,8 @@ fun EmergencyScreen() {
 
                 Button(
                     onClick = { sendWhatsAppMessage(context, emergencyNumber!!) },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFBB7E7A))
                 ) {
                     Text("Send WhatsApp Message")
                 }
@@ -119,7 +123,9 @@ fun EmergencyScreen() {
                         }
                         speechRecognizerLauncher.launch(intent)
                     },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFBB7E7A))
+
                 ) {
                     Text(if (isListening) "Listening..." else "Voice Trigger")
                 }
@@ -153,8 +159,3 @@ fun sendWhatsAppMessage(context: Context, number: String) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewEmergencyScreen() {
-    EmergencyScreen()
-}

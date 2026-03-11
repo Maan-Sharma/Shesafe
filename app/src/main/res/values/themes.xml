@@ -2,4 +2,22 @@
 <resources>
 
     <style name="Theme.MyApplication" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.MyApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Set the window background to white -->
+        <item name="android:windowBackground">@color/white</item>
+
+        <!-- Remove the status bar color (optional) -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <!-- Hide the navigation bar color (optional) -->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+
+        <!-- Prevent the system bars from adding extra padding -->
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
 </resources>

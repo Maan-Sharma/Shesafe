@@ -6,13 +6,15 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.google.firebase.firestore.FirebaseFirestore
 
 @Composable
-fun SettingsScreen(onNumberSaved: (() -> Unit)?) {
+fun SettingsScreen(navController: NavController, onNumberSaved: (() -> Unit)?) {
     val context = LocalContext.current
     val db = FirebaseFirestore.getInstance()
     var phoneNumber by remember { mutableStateOf("") }
@@ -34,26 +36,32 @@ fun SettingsScreen(onNumberSaved: (() -> Unit)?) {
         )
         Spacer(modifier = Modifier.height(16.dp))
 
-        Button(
-            onClick = {
-                if (phoneNumber.isNotEmpty()) {
-                    isSaving = true
-                    saveEmergencyNumber(db, phoneNumber) {
-                        isSaving = false
-                        Toast.makeText(context, "Emergency Number Saved!", Toast.LENGTH_SHORT).show()
-                        if (onNumberSaved != null) {
-                            onNumberSaved()
+
+
+                Button(
+                    onClick = {
+                        if (phoneNumber.isNotEmpty()) {
+                            isSaving = true
+                            saveEmergencyNumber(db, phoneNumber) {
+                                isSaving = false
+                                Toast.makeText(context, "Emergency Number Saved!", Toast.LENGTH_SHORT).show()
+                                onNumberSaved?.invoke()
+                            }
+                        } else {
+                            Toast.makeText(context, "Please enter a number!", Toast.LENGTH_SHORT).show()
                         }
-                    }
-                } else {
-                    Toast.makeText(context, "Please enter a number!", Toast.LENGTH_SHORT).show()
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    enabled = !isSaving,
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFBB7E7A)) // Corrected Property
+                ) {
+                    Text(
+                        text = if (isSaving) "Saving..." else "Save Number",
+                        color = Color.White // Ensures text is readable on colored button
+                    )
                 }
-            },
-            modifier = Modifier.fillMaxWidth(),
-            enabled = !isSaving
-        ) {
-            Text(if (isSaving) "Saving..." else "Save Number")
-        }
+
+
     }
 }
 
@@ -66,8 +74,3 @@ fun saveEmergencyNumber(db: FirebaseFirestore, number: String, onComplete: () ->
         .addOnFailureListener { onComplete() }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewSettingsScreen() {
-    SettingsScreen(onNumberSaved = {})
-}
