@@ -135,7 +135,7 @@ Download the APK from the **Releases** section.
 
 # Author 👨‍💻
 
-**Man Sharma || Aditya Routh || Asif Husssain Tahiri || Ayush sharma**
+**Man Sharma || Aditya Routh || Asif Husssain Tahiri || Ayush sharma || Ankit Shaw**
 
 Android Developer | Kotlin Developer
 
